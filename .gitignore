@@ -1,0 +1,27 @@
+# Dipendenze Composer
+vendor/
+
+# File di sistema
+.DS_Store
+.idea/
+*.swp
+*.swo
+*~
+
+# File di log
+*.log
+
+# File di configurazione sensibili
+.env
+.env.local
+
+# File con credenziali Google OAuth (ADS)
+ADS/googleSheet.php
+ADS/googleSheetDGTMedia.php
+ADS/googleSheetDGTMediaLead.php
+ADS/googleSheetMuza.php
+ADS/googleSheetNovaDirectLead.php
+ADS/googleSheetBenchmark.php
+ADS/googleSheetServizioClienti.php
+ADS/googleSheetGtLead.php
+

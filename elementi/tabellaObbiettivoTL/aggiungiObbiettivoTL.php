@@ -1,0 +1,70 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL | E_STRICT);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+session_start();
+
+$logged = $_SESSION["login"];
+$livello = $_SESSION["livello"];
+$user = $_SESSION["username"];
+$ip = $_SESSION["ip"];
+$visualizzazione = $_SESSION["visualizzazione"];
+$sede = $_SESSION["sede"];
+$permessi = $_SESSION["permessi"];
+$data = date("Y-m-01");
+
+if ($logged == false) {
+    header("location:https://ssl.novadirect.it/Know/index.php?errore=logged");
+}
+?>
+
+<html>
+    <head>
+        <title>Obbiettivo TL</title>
+        <link href="../../css/tabella.css" rel="stylesheet">
+        <link href="../../css/sidebar.css" rel="stylesheet">
+
+
+    </head>
+    <body>
+        <header>
+            <h1 class="titolo">Modifica Obbiettivo TL</h1>
+        </header>
+        <div>
+            <input type="hidden"  id="permessi" value=<?= $visualizzazione ?>>
+        </div>
+        <?php include '/Applications/MAMP/htdocs/Know/elementi/sidebar.html' ?>
+        <div class="pagina">
+            <form action="queryAggiuntaObbiettivoTL.php" method="POST" >
+                <fieldset >
+                    <legend>Modifica Obbiettivo TL</legend>
+
+                    <label for="gruppotl">Gruppo TL</label>
+                    <input type="text" name="gruppotl"  >
+                    <br>
+                    <label for="mese">Mese
+                        <input type="text" name="mese" value="<?= $data ?>">
+                    </label>
+                    <label for="tipo">Tipo</label>
+                    <input tipo="text" name="tipo"   >
+                    <br>
+                    <label for="sede">Sede</label>
+                    <input tipo="text" name="sede"   >
+                    <br>
+
+                    <input type="submit" value="Inserisci">
+                </fieldset>
+            </form>
+
+
+
+        </div>
+    </body>
+    <script>
+
+    </script>
+</html>
+
+

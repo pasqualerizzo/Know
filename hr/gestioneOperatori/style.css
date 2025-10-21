@@ -1,0 +1,88 @@
+.tabs {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    display: flex;
+    padding-left: 10px;
+    justify-content: space-evenly;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.tabsRicerca {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    display: flex;
+    gap: 15px;
+    border: 2px solid black;
+    padding: 10px;
+    
+    align-items: center;
+}
+
+.tabsRicercaForm {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    display: flex;
+    gap: 15px;
+    
+
+    
+    align-items: center;
+}
+
+.tablink {
+    background-color: inherit;
+    border: solid 1px;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+.tablink:hover {
+    background-color: #ddd;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+
+
+.tabellaOperatore {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabellaOperatore, .tabellaOperatore th, .tabellaOperatore td {
+    border: 1px solid black;
+}
+
+.tabellaOperatore th {
+    background-color: #3cbaff; /* Sfondo blu/azzurro */
+    color: white; /* Caratteri chiari */
+    padding: 10px;
+    text-align: left;
+}
+
+.tabellaOperatore tr:nth-child(even) {
+    background-color: #f2f2f2; /* Righe pari bianche */
+}
+
+.tabellaOperatore tr:nth-child(odd) {
+    background-color: #cccccc; /* Righe dispari grigie */
+}
+
+.tabellaOperatore td {
+    padding: 8px;
+    color: black; /* Caratteri neri */
+}
+
+.tabellaOperatore tr:nth-child(even) td:first-child {
+    background-color: #d3d3d3; /* Primo elemento delle righe pari con sfondo più scuro */
+}
+
+.tabellaOperatore tr:nth-child(odd) td:first-child {
+    background-color: #a9a9a9; /* Primo elemento delle righe dispari con sfondo ancora più scuro */
+}

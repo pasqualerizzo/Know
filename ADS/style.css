@@ -1,0 +1,70 @@
+body {
+    background-color: #dfe3ee;
+}
+.divForm {
+    width: 50%;
+    float: left;
+}
+
+form {
+    border: 2px black solid;
+    padding: 30px;
+    background-color: #3b5998;
+    width: 60%;
+    margin: 0% 10% 1% 15%;
+    border-radius: 20px;
+}
+
+.scadenza{
+    text-align: center;
+}
+
+.input{
+    margin-bottom: 25px;
+}
+
+.input-form{
+    width: 100%;
+    margin-top: 5px;
+    font-size: 30px;
+}
+input::placeholder{
+    font-size: 25px;
+}
+
+label{
+    font-size: 35px;
+    color: white;
+}
+
+button{
+    background-color: #dfe3ee;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 10px;
+    color: #3b5998;
+}
+button:hover{
+    background-color: #3b5998;
+    color: white;
+    border: solid 2px white;
+
+}
+
+.scadenza{
+    background-color: #3b5998;
+    border: 2px black solid;
+    width: 60%;
+    margin: 2% 10% 1% 15%;
+    border-radius: 20px;
+    color: white;
+    padding: 10px 30px;
+    font-size: 30px;
+}
+.divFormAds {
+    padding-top: 34%;
+    padding-left: 30%;
+    width: 50%;
+    float: both;
+}
+

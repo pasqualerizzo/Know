@@ -1,0 +1,132 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL | E_STRICT);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+session_start();
+
+$logged = $_SESSION["login"];
+$livello = $_SESSION["livello"];
+$user = $_SESSION["username"];
+$ip = $_SESSION["ip"];
+$visualizzazione = $_SESSION["visualizzazione"];
+$sede = $_SESSION["sede"];
+$permessi = $_SESSION["permessi"];
+
+if ($logged == false) {
+    header("location:https://ssl.novadirect.it/Know/index.php?errore=logged");
+}
+
+
+include "/Applications/MAMP/htdocs/Know/cruscotto/js/funzioniCruscotto.php";
+require "/Applications/MAMP/htdocs/Know/connessione/connessione.php";
+
+$obj19 = new Connessione();
+$conn19 = $obj19->apriConnessione();
+
+$queryLimiteDate = "SELECT min(giorno),max(giorno) FROM `stringheTotale`";
+$risultatoQueryLimiteDate = $conn19->query($queryLimiteDate);
+$rigaLimiteDate = $risultatoQueryLimiteDate->fetch_array();
+$dataMinima = $rigaLimiteDate[0];
+$dataMassima = $rigaLimiteDate[1];
+$datacorrente = date("Y-m-d");
+$giornoDellaSettimana = date("N");
+if ($giornoDellaSettimana == 1) {
+    $dataDefault = date("Y-m-d", strtotime("-2 days"));
+} else {
+    $dataDefault = date("Y-m-d", strtotime("-1 days"));
+}
+//echo $dataDefault;
+
+$mese = "";
+?>
+
+<html>
+    <head>
+        <title>Metrics:Cruscotto Produzione</title>
+        <link href="../../css/tabella.css" rel="stylesheet">
+        <link href="../../css/sidebar.css" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="../../images/favicon1.ico">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="icon" href="../../images/logo-metrics.png" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body style="font-family: poppins;" onload="aggiornaMandatoInvertito();permessi()">
+        <header>
+            <h1>Metrics:Cruscotto Produzione Invertito</h1>
+        </header>
+        <?php include '/Applications/MAMP/htdocs/Know/elementi/sidebar.html' ?>
+        <div>
+            <input type="hidden"  id="permessi" value=<?= $visualizzazione ?>>
+        </div>
+        <div class="container2">
+            <form action="">
+                <div style="display: flex;flex-wrap: nowrap;align-content: flex-start;justify-content: center;align-items: center;">
+
+                    <div style="display: flex;width: 25%;align-content: space-between;align-items: stretch;justify-content: space-between;flex-direction: column;flex-wrap: nowrap;">
+                        <label for="dataInizio">Data Inizio:
+                            <input type="date" id="dataInizio" name="dataInizio" max="<?= $dataMassima ?>"  min="<?= $dataMinima ?>" value="<?= $dataDefault ?>" onchange="aggiornaMandatoInvertito();aggiornaSedeInvertito()" > 
+                        </label>
+                        <br>
+                        <label for="dataFine">Data  Fine: 
+                            <input type="date" id="dataFine" name="datafine" max="<?= $dataMassima ?>"  min="<?= $dataMinima ?>" value="<?= $dataDefault ?>" onchange="aggiornaMandatoInvertito();aggiornaSedeInvertito()">
+                        </label>
+                    </div>
+
+                    <div style="display: flex;width: 25%;align-content: center;align-items: center;justify-content: space-evenly;">
+                        <label>Mandato:</label>
+                        <select  size="4" multiple id="mandato" onchange="aggiornaSedeInvertito()">
+
+                        </select>                        
+                    </div>
+
+                    <div style="display: flex;width: 25%;align-content: center;align-items: center;justify-content: space-evenly;height: auto; -webkit-appearance: menulist;">
+                        <label for="sede">Sedi:
+
+                        </label>
+                        <div >
+                            <button type="button" onclick="selezionaTutteSedi()">Seleziona tutte</button>
+                            <select  size="4" multiple id="sede" >
+                            </select>   
+                        </div>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <input type="hidden" id="testMode" name="testMode" value="test">
+
+                        <button type="button" onclick="creaTabellaInvertito();creaTabellaPdp();creaTabellaPdpEsterno();creaTabellaMatricola();creaTabellaTl()">Aggiorna</button>
+                        <button type="button" onclick="creaTabellaInvertitoEsteso();creaTabellaPdp();creaTabellaPdpEsterno();creaTabellaMatricola();creaTabellaTl()">Esteso</button>                            
+                        <button type="button" onclick="creaTabellaGiornaliero();creaTabellaPdpGiornaliero();pdpEsternoVuoto();creaTabellaTl()">Cruscotto Lead</button>                        
+                        <button type="button" onclick="creaTabellaGiornalieroSwVol();creaTabellaPdpSwVol();creaTabellaPdpEsternoSwVol();creaTabellaMatricolaSwVol();creaTabellaTl()">Switch e Volture</button>                        
+                        <button type="button" onclick="creaTabellaGiornalieroSwVolTotale();creaTabellaPdpSwVol();creaTabellaPdpEsternoSwVol();creaTabellaMatricolaSwVol();creaTabellaTl()">Sw_Vol SEDE</button>                        
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div>
+            <a id="tabella" style="display:flex;flex-wrap: nowrap;align-items: flex-start;flex-direction: column;align-content: center;justify-content: space-between;"></a>
+        </div>
+        <br>
+        <div >
+            <a id="PdpInterno" style="display:flex;flex-wrap: nowrap;align-items: flex-start;flex-direction: row;align-content: center;justify-content: space-between;"></a>
+        </div>
+        <br>
+        <div >
+            <a id="PdpEsterno" style="display:flex;flex-wrap: nowrap;align-items: flex-start;flex-direction: row;align-content: center;justify-content: space-between;"></a>
+        </div>
+         <br>
+        <div >
+            <a id="CodMatricola" style="display:flex;flex-wrap: nowrap;align-items: flex-start;flex-direction: row;align-content: center;justify-content: space-between;"></a>
+        </div>
+         
+         <div >
+            <a id="tabellaTL" style="display:flex;flex-wrap: nowrap;align-items: flex-start;flex-direction: row;align-content: center;justify-content: space-between;"></a>
+        </div>
+    </body>
+    <script>
+<?php
+include "/Applications/MAMP/htdocs/Know/cruscotto/js/funzioniCruscotto.js";
+?>
+    </script>
+</html>

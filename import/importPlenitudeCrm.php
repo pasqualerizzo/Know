@@ -1,0 +1,443 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL | E_STRICT);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+date_default_timezone_set('Europe/Rome');
+
+require "../connessione/connessioneCrm.php";
+require "../connessione/connessioneCrmNuovo.php";
+require "../funzioni/funzioniCrm.php";
+
+$objCrm = new ConnessioneCrm();
+$connCrm = $objCrm->apriConnessioneCrm();
+
+$objCrmN = new ConnessioneCrmNuovo();
+$connCrmNuovo = $objCrmN->apriConnessioneCrmNuovo();
+
+$queryOrigine = "
+SELECT 
+operatore.user_name as 'operatore',
+c.cf_3563 AS DataSottoscrizioneContratto,
+c.cf_3565 AS Commodity,
+c.cf_3567 AS Mercato,
+c.cf_3569 AS Sede,
+c.cf_3571 AS CodiceCampagna,
+c.cf_3573 AS Nome,
+c.cf_3575 AS Cognome,
+c.cf_3577 AS RagioneSociale,
+c.cf_3579 AS LuogodiNascita,
+c.cf_3581 AS CodiceFiscale,
+c.cf_3583 AS ProvinciadiNascita,
+c.cf_3585 AS Datadinascita,
+c.cf_3587 AS PartitaIva,
+c.cf_3589 AS CellularePrimario,
+c.cf_3591 AS Telefono,
+c.cf_3593 AS RecapitoAlternativo,
+c.cf_3595 AS Mail,
+c.cf_3597 AS TipoDocumento,
+c.cf_3599 AS EnteRilascio,
+c.cf_3601 AS NumeroDocumento,
+c.cf_3605 AS DataScadenzaDocumento,
+c.cf_3607 AS DataEmissioneDocumento,
+c.cf_3609 AS BollettaWeb,
+c.cf_3611 AS Assicurazione,
+c.cf_3613 AS IndirizzoFornitura,
+c.cf_3615 AS ProvinciaFornitura,
+c.cf_3617 AS CapFornitura,
+c.cf_3619 AS ComuneFornitura,
+c.cf_3621 AS IndirizzoResidenza,
+c.cf_3623 AS ProvinciaResidenza,
+c.cf_3625 AS CAPResidenza,
+c.cf_3627 AS ComuneResidenza,
+c.cf_3629 AS IndirizzoFatturazione,
+c.cf_3631 AS ProvinciaFatturazione,
+c.cf_3633 AS CAPFatturazione,
+c.cf_3635 AS ComuneFatturazione,
+c.cf_3637 AS Residente,
+c.cf_3639 AS POD,
+c.cf_3641 AS ConsumoAnnuo,
+c.cf_3643 AS PotImp,
+c.cf_3645 AS TariffaLuce,
+c.cf_3647 AS MercatodiProvenienza,
+c.cf_3649 AS CodicePDR,
+c.cf_3651 AS FornitoreEnergiaElettica,
+c.cf_3653 AS FornitoreGas,
+c.cf_3655 AS ConsumoAnnuoGAS,
+c.cf_3657 AS TariffaGas,
+c.cf_3659 AS MetododiPagamento,
+c.cf_3661 AS IBAN,
+c.cf_3663 AS RagioneSocialeTitolare,
+c.cf_3665 AS CodiceFiscaleTitolare,
+c.cf_3667 AS NotePagamento,
+c.cf_3669 AS NoteOperatore,
+c.cf_3671 AS NoteBackoffice,
+c.cf_3673 AS StatoPDA,
+c.cf_3675 AS MotivazioneKO,
+c.cf_3677 AS CodicePlicoLUCE,
+c.cf_3679 AS CodicePlicoGAS,
+c.cf_3681 AS StatoPlicoLUCE,
+c.cf_3683 AS StatoPlicoGAS,
+e.modifiedby AS LastModifiedBy,
+en.plenitudeno AS PlenitudeNo,
+c.cf_3687 AS DataLeads,
+c.cf_3715 AS DatainserimentoEni,
+c.cf_3739 AS TipoAcquisizione,
+c.cf_3745 AS NoteStatoLuce,
+c.cf_3747 AS NoteStatoGas,
+c.cf_3749 AS StatoCRMLuce,
+c.cf_3751 AS StatoCRMGas,
+c.cf_3771 AS PesoLordo,
+c.cf_3773 AS PesoPagato,
+c.cf_3781 AS InteressatoTelefonia,
+c.cf_3867 AS CodMatricola,
+c.cf_3879 AS HLRPlenitude,
+c.cf_3903 AS SANATABO,
+c.cf_3905 AS Sesso,
+c.cf_3911 AS Nazionedinascita,
+c.cf_4025 AS OperatoreTelemarketing,
+c.cf_4042 AS Amazon,
+c.cf_4070 AS IdSponsorizzate,
+c.cf_4072 AS LeadId,
+c.cf_4126 AS PdaEnergetica,
+c.cf_4128 AS AssegnatoMiniPDA,
+c.cf_4136 AS Winback,
+c.cf_4249 AS ProcessoWinback,
+c.cf_4416 AS Whatsapp,
+c.cf_4418 AS DoiBloccanteLuce,
+c.cf_4420 AS DoiBloccanteGas,
+c.cf_4792 AS VerificaBoPost,
+c.cf_4849 AS AltreRichieste,
+c.cf_4851 AS DataSwitchINLUCE,
+c.cf_4853 AS DataSwitchOUTLUCE,
+c.cf_4859 AS DataSwitchINGAS,
+c.cf_4861 AS DataSwitchOUTGas,
+c.cf_4871 AS Programmainsieme,
+c.cf_4873 AS deltaIntervallo,
+c.cf_4875 AS deltaIntervalloGas,
+c.cf_4877 AS UTMCampagna,
+c.cf_4885 AS Utm,
+c.cf_4978 AS Esecuzione,
+c.cf_4991 AS Precheck,
+c.cf_4993 AS dataarrivolead,
+c.cf_5418 AS SedeSub,
+c.cf_5420 AS BollettaWebSub,
+c.cf_5422 AS MetododipagamentoSub,
+c.cf_5424 AS HlrPleniSub,
+c.cf_5426 AS CommoditySub,
+c.cf_5428 AS TipoAcquisizioneSub,
+c.cf_5430 AS AssegnatoaSub,
+c.cf_5434 AS NomeCognomeTitolareSub,
+c.cf_5436 AS TariffaLuceSub,
+c.cf_5438 AS TariffaGasSub,
+c.cf_5440 AS ResidenteSub,
+c.cf_5442 AS Recall,
+c.cf_5444 AS StatoPost,
+c.cf_5446 AS operatorebackoffice,
+c.cf_5448 AS Polizza,
+c.cf_5494 AS Antichurn,
+c.cf_5496 AS Moroso,
+c.cf_5508 AS doi_SaleUP,
+c.cf_5510 AS id_Campagna,
+c.cf_5512 AS Risposta,
+c.cf_5514 AS PrivacycodiceInformativa,
+c.cf_5516 AS PrivacydataSottoscrizione,
+c.cf_5518 AS channel,
+c.cf_5520 AS touchpoint,
+c.cf_5522 AS prodotto,
+c.cf_5524 AS ip,
+c.cf_5526 AS Esitochiamata,
+c.cf_5528 AS DescrizioneEsito,
+c.cf_5530 AS numeroEntrante,
+c.cf_5532 AS Result_code,
+c.cf_5534 AS InzioChiamata,
+c.cf_5536 AS FineChiamata,
+c.cf_5538 AS TipoChiamata,
+c.cf_5540 AS ListId,
+c.cf_5542 AS OrarioFirma,
+c.cf_5544 AS tipoprodotto,
+c.cf_5546 AS OrarioDOC,
+c.cf_5548 AS Result_codeLavorato,
+c.cf_5550 AS Result_codeDichiarato,
+c.cf_5633 AS OrarioAcquisito
+FROM 
+vtiger_plenitudecf  as c
+inner join vtiger_plenitude as en ON c.plenitudeid=en.plenitudeid
+inner join vtiger_crmentity as e ON c.plenitudeid=e.crmid 
+inner join vtiger_users as operatore on e.smownerid=operatore.id 
+WHERE
+e.deleted=0 and c.cf_3563 BETWEEN '2025-06-07' AND '2025-06-07'
+";
+
+$risposta = $connCrm->query($queryOrigine);
+while ($riga = $risposta->fetch_array()) {
+    $operatore = $riga['operatore'];
+    //$id = $riga['id'];
+    //$AssignedTo = $riga['AssignedTo'];
+    //$CreatedTime = $riga['CreatedTime'];
+    //$ModifiedTime = $riga['ModifiedTime'];
+    //$Source = $riga['Source'];
+    //$starred = $riga['starred'];
+    //$tags = $riga['tags'];
+    $DataSottoscrizioneContratto = $riga['DataSottoscrizioneContratto'];
+    $Commodity = $riga['Commodity'];
+    $Mercato = $riga['Mercato'];
+    $Sede = $riga['Sede'];
+    $CodiceCampagna = $riga['CodiceCampagna'];
+    $Nome = $riga['Nome'];
+    $Cognome = $riga['Cognome'];
+    $RagioneSociale = $riga['RagioneSociale'];
+    $LuogodiNascita = $riga['LuogodiNascita'];
+    $CodiceFiscale = $riga['CodiceFiscale'];
+    $ProvinciadiNascita = $riga['ProvinciadiNascita'];
+    $Datadinascita = $riga['Datadinascita'];
+    $PartitaIva = $riga['PartitaIva'];
+    $CellularePrimario = $riga['CellularePrimario'];
+    $Telefono = $riga['Telefono'];
+    $RecapitoAlternativo = $riga['RecapitoAlternativo'];
+    $Mail = $riga['Mail'];
+    $TipoDocumento = $riga['TipoDocumento'];
+    $EnteRilascio = $riga['EnteRilascio'];
+    $NumeroDocumento = $riga['NumeroDocumento'];
+    $DataScadenzaDocumento = $riga['DataScadenzaDocumento'];
+    $DataEmissioneDocumento = $riga['DataEmissioneDocumento'];
+    $BollettaWeb = $riga['BollettaWeb'];
+    $Assicurazione = $riga['Assicurazione'];
+    $IndirizzoFornitura = $riga['IndirizzoFornitura'];
+    $ProvinciaFornitura = $riga['ProvinciaFornitura'];
+    $CapFornitura = $riga['CapFornitura'];
+    $ComuneFornitura = $riga['ComuneFornitura'];
+    $IndirizzoResidenza = $riga['IndirizzoResidenza'];
+    $ProvinciaResidenza = $riga['ProvinciaResidenza'];
+    $CAPResidenza = $riga['CAPResidenza'];
+    $ComuneResidenza = $riga['ComuneResidenza'];
+    $IndirizzoFatturazione = $riga['IndirizzoFatturazione'];
+    $ProvinciaFatturazione = $riga['ProvinciaFatturazione'];
+    $CAPFatturazione = $riga['CAPFatturazione'];
+    $ComuneFatturazione = $riga['ComuneFatturazione'];
+    $Residente = $riga['Residente'];
+    $POD = $riga['POD'];
+    $ConsumoAnnuo = $riga['ConsumoAnnuo'];
+    $PotImp = $riga['PotImp'];
+    $TariffaLuce = $riga['TariffaLuce'];
+    $MercatodiProvenienza = $riga['MercatodiProvenienza'];
+    $CodicePDR = $riga['CodicePDR'];
+    $FornitoreEnergiaElettica = $riga['FornitoreEnergiaElettica'];
+    $FornitoreGas = $riga['FornitoreGas'];
+    $ConsumoAnnuoGAS = $riga['ConsumoAnnuoGAS'];
+    $TariffaGas = $riga['TariffaGas'];
+    $MetododiPagamento = $riga['MetododiPagamento'];
+    $IBAN = $riga['IBAN'];
+    $RagioneSocialeTitolare = $riga['RagioneSocialeTitolare'];
+    $CodiceFiscaleTitolare = $riga['CodiceFiscaleTitolare'];
+    $NotePagamento = $riga['NotePagamento'];
+    $NoteOperatore = $riga['NoteOperatore'];
+    $NoteBackoffice = $riga['NoteBackoffice'];
+    $StatoPDA = $riga['StatoPDA'];
+    $MotivazioneKO = $riga['MotivazioneKO'];
+    $CodicePlicoLUCE = $riga['CodicePlicoLUCE'];
+    $CodicePlicoGAS = $riga['CodicePlicoGAS'];
+    $StatoPlicoLUCE = $riga['StatoPlicoLUCE'];
+    $StatoPlicoGAS = $riga['StatoPlicoGAS'];
+    $LastModifiedBy = $riga['LastModifiedBy'];
+    $PlenitudeNo = $riga['PlenitudeNo'];
+    $DataLeads = $riga['DataLeads'];
+    $DatainserimentoEni = $riga['DatainserimentoEni'];
+    $TipoAcquisizione = $riga['TipoAcquisizione'];
+    $NoteStatoLuce = $riga['NoteStatoLuce'];
+    $NoteStatoGas = $riga['NoteStatoGas'];
+    $StatoCRMLuce = $riga['StatoCRMLuce'];
+    $StatoCRMGas = $riga['StatoCRMGas'];
+    $PesoLordo = $riga['PesoLordo'];
+    $PesoPagato = $riga['PesoPagato'];
+    $InteressatoTelefonia = $riga['InteressatoTelefonia'];
+    $CodMatricola = $riga['CodMatricola'];
+    $HLRPlenitude = $riga['HLRPlenitude'];
+    $SANATABO = $riga['SANATABO'];
+    $Sesso = $riga['Sesso'];
+    $Nazionedinascita = $riga['Nazionedinascita'];
+    $OperatoreTelemarketing = $riga['OperatoreTelemarketing'];
+    $Amazon = $riga['Amazon'];
+    $IdSponsorizzate = $riga['IdSponsorizzate'];
+    $LeadId = $riga['LeadId'];
+    $PdaEnergetica = $riga['PdaEnergetica'];
+    $AssegnatoMiniPDA = $riga['AssegnatoMiniPDA'];
+    $Winback = $riga['Winback'];
+    $ProcessoWinback = $riga['ProcessoWinback'];
+    $Whatsapp = $riga['Whatsapp'];
+    $DoiBloccanteLuce = $riga['DoiBloccanteLuce'];
+    $DoiBloccanteGas = $riga['DoiBloccanteGas'];
+    $VerificaBoPost = $riga['VerificaBoPost'];
+    $AltreRichieste = $riga['AltreRichieste'];
+    $DataSwitchINLUCE = $riga['DataSwitchINLUCE'];
+    $DataSwitchOUTLUCE = $riga['DataSwitchOUTLUCE'];
+    $DataSwitchINGAS = $riga['DataSwitchINGAS'];
+    $DataSwitchOUTGas = $riga['DataSwitchOUTGas'];
+    $Programmainsieme = $riga['Programmainsieme'];
+    $deltaIntervallo = $riga['deltaIntervallo'];
+    $deltaIntervalloGas = $riga['deltaIntervalloGas'];
+    $UTMCampagna = $riga['UTMCampagna'];
+    $Utm = $riga['Utm'];
+    $Esecuzione = $riga['Esecuzione'];
+    $Precheck = $riga['Precheck'];
+    $dataarrivolead = $riga['dataarrivolead'];
+    $SedeSub = $riga['SedeSub'];
+    $BollettaWebSub = $riga['BollettaWebSub'];
+    $MetododipagamentoSub = $riga['MetododipagamentoSub'];
+    $HlrPleniSub = $riga['HlrPleniSub'];
+    $CommoditySub = $riga['CommoditySub'];
+    $TipoAcquisizioneSub = $riga['TipoAcquisizioneSub'];
+    $AssegnatoaSub = $riga['AssegnatoaSub'];
+    $NomeCognomeTitolareSub = $riga['NomeCognomeTitolareSub'];
+    $TariffaLuceSub = $riga['TariffaLuceSub'];
+    $TariffaGasSub = $riga['TariffaGasSub'];
+    $ResidenteSub = $riga['ResidenteSub'];
+    $Recall = $riga['Recall'];
+    $StatoPost = $riga['StatoPost'];
+    $operatorebackoffice = $riga['operatorebackoffice'];
+    $Polizza = $riga['Polizza'];
+    $Antichurn = $riga['Antichurn'];
+    $Moroso = $riga['Moroso'];
+    $doi_SaleUP = $riga['doi_SaleUP'];
+    $id_Campagna = $riga['id_Campagna'];
+    $Risposta = $riga['Risposta'];
+    $PrivacycodiceInformativa = $riga['PrivacycodiceInformativa'];
+    $PrivacydataSottoscrizione = $riga['PrivacydataSottoscrizione'];
+    $channel = $riga['channel'];
+    $touchpoint = $riga['touchpoint'];
+    $prodotto = $riga['prodotto'];
+    $ip = $riga['ip'];
+    $Esitochiamata = $riga['Esitochiamata'];
+    $DescrizioneEsito = $riga['DescrizioneEsito'];
+    $numeroEntrante = $riga['numeroEntrante'];
+    $Result_code = $riga['Result_code'];
+    $InzioChiamata = $riga['InzioChiamata'];
+    $FineChiamata = $riga['FineChiamata'];
+    $TipoChiamata = $riga['TipoChiamata'];
+    $ListId = $riga['ListId'];
+    $OrarioFirma = $riga['OrarioFirma'];
+    $tipoprodotto = $riga['tipoprodotto'];
+    $OrarioDOC = $riga['OrarioDOC'];
+    $Result_codeLavorato = $riga['Result_codeLavorato'];
+    $Result_codeDichiarato = $riga['Result_codeDichiarato'];
+    $OrarioAcquisito = $riga['OrarioAcquisito'];
+
+    $queryOperatore = " SELECT id FROM vtiger_users WHERE user_name='$operatore'";
+    $risp = $connCrmNuovo->query($queryOperatore);
+    if ($risp->num_rows > 0) {
+        $op = $risp->fetch_array();
+        $idOperatore = $op[0];
+    } else {
+        $idOperatore = 5;
+    }
+
+
+    $dati = [
+        'plenitude' => $PlenitudeNo,
+        'leadid' => $LeadId,
+        'idsponsorizzata' => $IdSponsorizzate,
+        'winback' => $Winback,
+        'utm' => $UTMCampagna,
+//'tipoesecuzione'=> ,
+        'listid' => $ListId,
+        'codicecampagna' => $CodiceCampagna,
+        'numeroentante' => $numeroEntrante,
+        'sede' => $Sede,
+        'iniziochiamata' => $InzioChiamata,
+        'finechiamata' => $FineChiamata,
+        'dataarrivolead' => $dataarrivolead,
+        'datasottoscrizionecontratto' => $DataSottoscrizioneContratto,
+        'commodity' => $Commodity,
+        'mercato' => $Mercato,
+        'tipoacquisizione' => $TipoAcquisizione,
+        'codicematricola' => $CodMatricola,
+        'tipoprodotto' => $tipoprodotto,
+        'tipochiamata' => $TipoChiamata,
+        'nome' => $Nome,
+        'cognome' => $Cognome,
+        'ragionesociale' => $RagioneSociale,
+        'sesso' => $Sesso,
+        'luogonascita' => $LuogodiNascita,
+        'provincianascita' => $ProvinciadiNascita,
+        'datanascita' => $Datadinascita,
+        'codicefiscale' => $CodiceFiscale,
+        'partitaiva' => $PartitaIva,
+        'cellulareprimario' => $CellularePrimario,
+        'telefono' => $Telefono,
+        'recapitoalternativo' => $RecapitoAlternativo,
+        'mail' => $Mail,
+        'numerodocumento' => $NumeroDocumento,
+        'enterilasciodocumento' => $EnteRilascio,
+        'datarilasciodocumento' => $DataEmissioneDocumento,
+        'nazionalita' => $Nazionedinascita,
+        'indirizzofornitura' => $IndirizzoFornitura,
+        'provinciafornitura' => $ProvinciaFornitura,
+        'capfornitura' => $CapFornitura,
+        'comunefornitura' => $ComuneFornitura,
+        'indirizzoresidenza' => $IndirizzoResidenza,
+        'provinciaresidenza' => $ProvinciaResidenza,
+        'capresidenza' => $CAPResidenza,
+        'comuneresidenza' => $ComuneResidenza,
+        'indirizzofatturazione' => $IndirizzoFatturazione,
+        'provinciafatturazione' => $ProvinciaFatturazione,
+        'capfatturazione' => $CAPFatturazione,
+        'comunefatturazione' => $ComuneFatturazione,
+        'pod' => $POD,
+        'tariffaluce' => $TariffaLuce,
+        'fornitoreenergiaelettrica' => $FornitoreEnergiaElettica,
+        'consumoenergiaelettrica' => $ConsumoAnnuo,
+        'potenzaimpianto' => $PotImp,
+        'codicepdr' => $CodicePDR,
+        'tariffagas' => $TariffaGas,
+        'fornitoregas' => $FornitoreGas,
+        'consumoannuogas' => $ConsumoAnnuoGAS,
+//'codicematricolagas'=> $Codi,
+        'metodopagamento' => $MercatodiProvenienza,
+        'iban' => $IBAN,
+        'ragionesocialetitolare' => $RagioneSocialeTitolare,
+        'codicefiscaletitolare' => $CodiceFiscaleTitolare,
+        'metodoinviofattura' => $BollettaWeb,
+        'noteoperatore' => $NoteOperatore,
+        'notebackoffice' => $NoteBackoffice,
+        'statopda' => $StatoPDA,
+        'motivazioneko' => $MotivazioneKO,
+        'codiceplicoluce' => $CodicePlicoLUCE,
+        'statoplicoluce' => $StatoPlicoLUCE,
+        'noteplicoluce' => $NoteStatoLuce,
+        'codiceplicogas' => $CodicePlicoGAS,
+        'statoplicogas' => $StatoPlicoGAS,
+        'noteplicogas' => $NoteStatoGas,
+        'dataswitchinluce' => $DataSwitchINLUCE,
+        'dataswitchoutluce' => $DataSwitchOUTLUCE,
+        'dataswitchingas' => $DataSwitchINGAS,
+        'dataswitchoutgas' => $DataSwitchOUTGas,
+        'deltaintervalloluce' => $deltaIntervallo,
+        'deltaintervallogas' => $deltaIntervalloGas,
+        'orariofirma' => $OrarioFirma,
+        'orarioacquisito' => $OrarioAcquisito,
+        'precheck' => $Precheck,
+        'verificabopost' => $VerificaBoPost,
+        'recall' => $Recall,
+        'whatsapp' => $Whatsapp,
+        'doisaleup' => $doi_SaleUP,
+        'privacycodiceinformativa' => $PrivacycodiceInformativa,
+        'privacydatasottoscrizione' => $PrivacydataSottoscrizione,
+        'channel' => $channel,
+        'touchpoint' => $touchpoint,
+        'prodotto' => $prodotto,
+        'orariodoc' => $OrarioDOC,
+        'descrizioneesito' => $DescrizioneEsito,
+        'resultcode' => $Result_code,
+        'resultcodedichiarato' => $Result_codeDichiarato,
+        'resultcodelavorato' => $Result_codeLavorato,
+        'cf_1595' => $Moroso,
+        'cf_1597' => $ProcessoWinback,
+        'cf_1617' => $CodMatricola,
+        'datacontratto' => $DataSottoscrizioneContratto,
+    ];
+
+    $r = importModulo($dati, $idOperatore, "Plenitude");
+    echo $r . "<br>";
+}

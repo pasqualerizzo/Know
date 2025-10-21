@@ -1,0 +1,293 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL | E_STRICT);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+require "/Applications/MAMP/htdocs/Know/connessione/connessione.php";
+$obj19 = new Connessione();
+$conn19 = $obj19->apriConnessione();
+
+$mese = filter_input(INPUT_POST, "mese");
+
+//$mese="2024-07";
+$dataMinore = filter_input(INPUT_POST, "dataMinore");
+$dataMaggiore = filter_input(INPUT_POST, "dataMaggiore");
+
+//$testMode = $_POST["testMode"];
+//echo $testMode;
+//if ($testMode=="true") {
+//    echo "si";
+//}
+$mandato = json_decode($_POST["mandato"], true);
+$sede = json_decode($_POST["sede"], true);
+
+$dataMinoreIta = date('d-m-Y', strtotime($dataMinore));
+$dataMaggioreIta = date('d-m-Y', strtotime($dataMaggiore));
+
+$queryMandato = "";
+$lunghezza = count($mandato);
+
+$pezzoLordoSede = 0;
+$pezzoOkSede = 0;
+$pezzoKoSede = 0;
+$pezzoBklSede = 0;
+$pezzoBklpSede = 0;
+$oreSede = 0;
+
+$pezzoLordoTotale = 0;
+$pezzoOkTotale = 0;
+$pezzoKoTotale = 0;
+$pezzoBklTotale = 0;
+$pezzoBklpTotale = 0;
+$oreTotale = 0;
+
+
+$sedePrecedente = "";
+
+$querySede = "";
+$lunghezzaSede = count($sede);
+
+if ($lunghezzaSede == 1) {
+    $querySede .= " AND sede='$sede[0]' ";
+} elseif ($lunghezzaSede == 1) {
+    $querySede = "";
+} else {
+    for ($l = 0;
+            $l < $lunghezzaSede;
+            $l++) {
+        if ($l == 0) {
+            $querySede .= " AND ( ";
+        }
+        $querySede .= " sede='$sede[$l]' ";
+        if ($l == ($lunghezzaSede - 1)) {
+            $querySede .= " ) ";
+        } else {
+            $querySede .= " OR ";
+        }
+    }
+}
+
+$html = "<table class='blueTable'>";
+include "../../tabella/intestazioneTabellaChiusura.php";
+
+foreach ($mandato as $idMandato) {
+
+    switch ($idMandato) {
+        case "Plenitude":
+            $queryCrmSede = "SELECT
+            sede,
+    'Plenitude' AS plenitude,
+        
+    
+    SUM(pezzoLordo) AS Prodotto,
+    SUM(CASE WHEN fasePDA = 'OK' THEN pezzoLordo ELSE 0 END) AS Inserito,
+ 
+FROM 
+    `plenitude`
+INNER JOIN 
+    aggiuntaPlenitude 
+    ON plenitude.id = aggiuntaPlenitude.id 
+WHERE 
+data<='$dataMaggiore' and data>='$dataMinore'   
+    AND statoPda NOT IN ('bozza', 'annullata', 'pratica doppia', 'In attesa Sblocco')
+    AND comodity <> 'Polizza'
+GROUP BY 
+    sede";
+
+            break;
+        case "Green Network":
+            $queryCrmSede = "SELECT 
+        sede,
+        'Green Network' AS green,
+    SUM(pezzoLordo) AS Prodotto,
+    SUM(CASE WHEN fasePDA = 'OK' THEN pezzoLordo ELSE 0 END) AS Inserito
+FROM 
+    green
+INNER JOIN 
+    aggiuntaGreen 
+    ON green.id = aggiuntaGreen.id 
+WHERE 
+data<='$dataMaggiore' and data>='$dataMinore' 
+    AND statoPda NOT IN ('bozza', 'annullata', 'pratica doppia', 'In attesa Sblocco')
+    AND comodity <> 'Polizza'
+GROUP BY 
+    sede";
+            break;
+        case "Vivigas Energia":
+            $queryCrmSede = "SELECT 
+        sede,
+        'Vivigas' AS vivigas,
+    SUM(pezzoLordo) AS Prodotto,
+    SUM(CASE WHEN fasePDA = 'OK' THEN pezzoLordo ELSE 0 END) AS Inserito
+FROM 
+    `vivigas`
+inner JOIN aggiuntaVivigas on vivigas.id=aggiuntaVivigas.id
+where data<='$dataMaggiore' and data>='$dataMinore'
+    AND statoPda NOT IN ('bozza', 'annullata', 'pratica doppia', 'In attesa Sblocco')
+    AND comodity <> 'Polizza'
+GROUP BY 
+    sede";
+
+            break;
+        case "Vodafone":
+            $queryCrmSede = "SELECT 
+        'Lamezia',
+        'Vodafone' AS vodafone,
+    SUM(pezzoLordo) AS Prodotto,
+    SUM(CASE WHEN fasePDA = 'OK' THEN pezzoLordo ELSE 0 END) AS Inserito
+FROM 
+    vodafone
+INNER JOIN 
+    aggiuntaVodafone 
+    ON vodafone.id = aggiuntaVodafone.id 
+where `dataVendita`<='$dataMaggiore' and `dataVendita`>='$dataMinore'  
+    AND statoPda NOT IN ('bozza', 'annullata', 'pratica doppia')
+
+";
+            break;
+        case "enel_out":
+            $queryCrmSede = "SELECT 
+        sede,
+        'EnelOut' AS EnelOut,
+    SUM(pezzoLordo) AS Prodotto,
+    SUM(CASE WHEN fasePDA = 'OK' THEN pezzoLordo ELSE 0 END) AS Inserito
+FROM 
+    enelOut
+inner JOIN aggiuntaEnelOut on enelOut.id=aggiuntaEnelOut.id 
+where data<='$dataMaggiore' and data>='$dataMinore'
+    AND statoPda NOT IN ('bozza', 'annullata', 'pratica doppia', 'In attesa Sblocco')
+    AND comodity <> 'Fibra'
+GROUP BY 
+    sede";
+            break;
+
+        case "Iren":
+            $queryCrmSede = "SELECT "
+                    . " sede, "
+                    . " 'iren' AS iren, "
+                    . " SUM(pezzoLordo) AS Prodotto, "
+                    . " SUM(CASE WHEN fasePDA = 'OK' THEN pezzoLordo ELSE 0 END) AS Inserito "
+                    . " FROM "
+                    . "`iren`  "
+                    . " inner JOIN aggiuntaIren on iren.id=aggiuntaIren.id "
+                    . " where "
+                    . " data<='$dataMaggiore' and data>='$dataMinore' "
+                    . " AND statoPda NOT IN ('bozza', 'annullata', 'pratica doppia', 'In attesa Sblocco') "
+                    . " AND comodity <> 'Polizza' "
+                    . " GROUP BY "
+                    . " sede ";
+            break;
+
+        case "Union":
+            $queryCrmSede = "SELECT 
+               sede,
+               REPLACE('know.union', 'know.', '')  AS mandato,
+    SUM(pezzoLordo) AS Prodotto,
+    SUM(CASE WHEN fasePDA = 'OK' THEN pezzoLordo ELSE 0 END) AS Inserito
+FROM 
+    know.union
+inner JOIN aggiuntaUnion on know.union.id=aggiuntaUnion.id 
+where data<='$dataMaggiore' and data>='$dataMinore'
+    AND statoPda NOT IN ('bozza', 'annullata', 'pratica doppia', 'In attesa Sblocco')
+GROUP BY 
+    sede";
+            break;
+    }
+
+
+
+
+    $risultatoCrmSede = $conn19->query($queryCrmSede);
+
+    while ($rigaCRM = $risultatoCrmSede->fetch_array()) {
+
+        $sede = $rigaCRM[0];
+        $sedeRicerca = ucwords($sede);
+        $descrizioneMandato = $rigaCRM[1];
+
+        $queryGroupMandato = "SELECT sum(numero)/3600 as ore "
+                . "FROM `stringheTotale`  "
+                . "where giorno>='$dataMinore' and giorno<='$dataMaggiore' and livello<=6  "
+                . " and sede='$sede'  and idMandato='$idMandato'  "
+                . "group by sede";
+        //echo $queryGroupMandato;
+        $risultaOre = $conn19->query($queryGroupMandato);
+        if (($risultaOre->num_rows) > 0) {
+            $rigaOre = $risultaOre->fetch_array();
+            $ore = $rigaOre[0];
+        } else {
+            $ore = 0;
+        }
+        
+        
+        $pezzoLordo = round($rigaCRM[2], 0);
+        $pezzoOk = round($rigaCRM[3], 0);
+        if ($pezzoLordo == 0) {
+    $caduta = '0.00%'; // O qualsiasi valore di default che preferisci
+} else {
+    $caduta = number_format((($pezzoLordo - $pezzoOk) / $pezzoLordo) * 100, 2) . '%';
+}
+        $resa = ($ore == 0) ? 0 : round($pezzoOk / $ore, 2);
+        $resalordo = ($ore == 0) ? 0 : round($pezzoLordo / $ore, 2);
+
+
+        $html .= "<tr>";
+        $html .= "<td >$sede</td>";
+        $html .= "<td >$idMandato</td>";
+
+        $html .= "<td style = 'border-left: 2px solid lightslategray'>$pezzoLordo</td>";
+
+        $html .= "<td style = 'border-left: 2px solid lightslategray'>$resalordo</td>";
+
+        $html .= "<td style = 'border-left: 2px solid lightslategray'>$pezzoOk</td>";
+
+        $html .= "<td style = 'border-left: 2px solid lightslategray'>$resa</td>";
+
+        $html .= "<td style = 'border-left: 2px solid lightslategray'>$caduta</td>";
+
+//        $html .= "<td style = 'border-left: 2px solid lightslategray'>$pezzoBkl</td>";
+
+        $html .= "<td style = 'border-left: 2px solid lightslategray'>" . round($ore, 2) . "</td>";
+        $html .= "</tr>";
+
+
+        $sedePrecedente = $sede;
+
+        $oreSede += $ore;
+    }
+
+    $pezzoLordoTotale += $pezzoLordoSede;
+    $pezzoOkTotale += $pezzoOkSede;
+    $pezzoKoTotale += $pezzoKoSede;
+    $pezzoBklTotale += $pezzoBklSede;
+    $pezzoBklpTotale += $pezzoBklpSede;
+    $oreTotale += round($oreSede, 2);
+
+    $percentualeInvioOKTotale = (($pezzoCartaceoOKTotale + $pezzoMailOKTotale) == 0) ? 0 : round(($pezzoMailOKTotale / ($pezzoCartaceoOKTotale + $pezzoMailOKTotale)) * 100, 2);
+
+    $html .= "<tr>";
+    $html .= "<td colspan = '2'></td>";
+
+    $html .= "<td style = 'border-left: 2px solid lightslategray'></td>";
+
+    $html .= "<td style = 'border-left: 2px solid lightslategray'></td>";
+
+    $html .= "<td style = 'border-left: 2px solid lightslategray'></td>";
+
+    $html .= "<td style = 'border-left: 2px solid lightslategray'></td>";
+
+    $html .= "<td style = 'border-left: 2px solid lightslategray'></td>";
+
+    $html .= "<td style = 'border-left: 2px solid lightslategray'></td>";
+
+//    $html .= "<td style = 'border-left: 2px solid lightslategray'></td>";
+
+    $html .= "</tr>";
+      //      . "</table>";
+
+
+}
+echo $html;
+

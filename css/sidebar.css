@@ -1,0 +1,365 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 21 mar 2024, 19:24:08
+    Author     : IT
+*/
+.container {
+    display: flex;
+    margin: 5px auto;
+    padding: 10px 0;
+    clear: both;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow:  0px 4px 13px #888888;
+    margin-bottom: 30px;
+    border-top: 5px solid orange;
+}
+
+nav{
+    vertical-align:middle;
+    display: flex;
+    vertical-align: middle;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 20px;
+}
+.nav2{
+    vertical-align:middle;
+    width: 10%;
+
+}
+
+.container2 {
+    background-color: white;
+    border-top: 5px solid orange;
+    margin: 5px auto;
+    padding: 5px 0;
+    clear: both;
+    width: 100%;
+    top:75px;
+    border-radius: 10px;
+    box-shadow:  0px 4px 13px #888888;
+    margin-bottom: 30px;
+}
+h1{
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+}
+p{
+    margin: 5px;
+}
+
+body {
+    background: #EEE;
+    overflow-x:visible;
+}
+
+
+
+.menu{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #FFF;
+    width:auto;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    height: 50px;
+    align-content: center;
+}
+
+
+.menu li{
+    float: left;
+    list-style: none;
+    padding: 0 2px;
+    position: relative;
+
+}
+
+.menu li .btn-sinistro {
+    display: block;
+    text-decoration: none;
+    padding: 12px 20px;
+    color: #777;
+    text-align: center;
+    border: 1px solid #E7E7E7;
+    border-radius: 10px;
+}
+
+.menu li .btn-sinistro i {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 10px;
+    float: left;
+    font-size: 20px;
+    margin: 0 10px 0 0;
+}
+
+.menu li .btn-sinistro p {
+    float: left;
+    margin: 0 ;
+}
+
+.menu li .btn-sinistro strong {
+    display: block;
+    text-transform: uppercase;
+}
+.menu li btn-sinistro small {
+    display: block;
+    font-size: 10px;
+}
+
+.menu li .btn-sinistro i,
+.menu li .btn-sinistro strong,
+.menu li .btn-sinistro small {
+    position: relative;
+    transition: all 300ms linear;
+    -o-transition: all 300ms linear;
+    -ms-transition: all 300ms linear;
+    -moz-transition: all 300ms linear;
+    -webkit-transition: all 300ms linear;
+    
+    transition-delay: 300ms;
+    -o-transition-delay: 300ms;
+    -ms-transition-delay: 300ms;
+    -moz-transition-delay:   300ms ;
+    -webkit-transition-delay:   300ms ;
+}
+.menu li:hover > .btn-sinistro i {
+    opacity: 1;
+    -webkit-animation: moveFromTop 300ms ease-in-out;
+    -moz-animation: moveFromTop 300ms ease-in-out;
+    -ms-animation: moveFromTop 300ms ease-in-out;
+    -o-animation: moveFromTop 300ms ease-in-out;
+    animation: moveFromTop 300ms ease-in-out;
+    transition-delay: 300ms;
+    -o-transition-delay: 300ms;
+    -ms-transition-delay: 300ms;
+    -moz-transition-delay:   300ms ;
+    -webkit-transition-delay:   300ms ;
+}
+
+.menu li:hover .btn-sinistro strong {
+    opacity: 1;
+    -webkit-animation: moveFromLeft 300ms ease-in-out;
+    -moz-animation: moveFromLeft 300ms ease-in-out;
+    -ms-animation: moveFromLeft 300ms ease-in-out;
+    -o-animation: moveFromLeft 300ms ease-in-out;
+    animation: moveFromLeft 300ms ease-in-out;
+    
+    transition-delay: 300ms;
+    -o-transition-delay: 300ms;
+    -ms-transition-delay: 300ms;
+    -moz-transition-delay:   300ms ;
+    -webkit-transition-delay:   300ms ;
+}
+.menu li:hover .btn-sinistro small {
+    opacity: 1;
+    -webkit-animation: moveFromRight 300ms ease-in-out;
+    -moz-animation: moveFromRight 300ms ease-in-out;
+    -ms-animation: moveFromRight 300ms ease-in-out;
+    -o-animation: moveFromRight 300ms ease-in-out;
+    animation: moveFromRight 300ms ease-in-out;
+    
+    transition-delay: 300ms;
+    -o-transition-delay: 300ms;
+    -ms-transition-delay: 300ms;
+    -moz-transition-delay:   300ms ;
+    -webkit-transition-delay:   300ms ;
+}
+
+.menu li:hover > .btn-sinistro {
+    background-color: #e67e22;
+    border-radius: 10px;
+    color: white;
+}
+.menu li .btn-sinistro.active {
+    position: relative;
+    color: #e67e22;
+
+    border-top: 4px solid #e67e22;
+    border-bottom: 4px solid #e67e22;
+    margin-top: -4px;
+    box-shadow: 0 0 5px #DDD;
+    -moz-box-shadow: 0 0 5px #DDD;
+    -webkit-box-shadow: 0 0 5px #DDD;
+
+    /* == */
+    border-left: 4px solid #e67e22;
+    border-right: 4px solid #e67e22;
+    margin: 0 -4px;
+    /* == */
+}
+.menu li .btn-sinistro.active:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 45%;
+    border-top: 5px solid #e67e22;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+
+.menu li .btn-sinistro.active:after {
+    content: "";
+    position: absolute;
+    top: 42%;
+    right: 0;
+    border-right: 5px solid #e67e22;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+@-webkit-keyframes moveFromTop {
+    from {
+        opacity: 0.9;
+        -webkit-transform: translateY(200%);
+        -moz-transform: translateY(200%);
+        -ms-transform: translateY(200%);
+        -o-transform: translateY(200%);
+        transform: translateY(200%);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+        -moz-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        -o-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+@-webkit-keyframes moveFromLeft {
+    from {
+        opacity: 0.9;
+        -webkit-transform: translateX(200%);
+        -moz-transform: translateX(200%);
+        -ms-transform: translateX(200%);
+        -o-transform: translateX(200%);
+        transform: translateX(200%);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+        transform: translateX(0%);
+    }
+}
+@-webkit-keyframes moveFromRight {
+    from {
+        opacity: 0.9;
+        -webkit-transform: translateX(-200%);
+        -moz-transform: translateX(-200%);
+        -ms-transform: translateX(-200%);
+        -o-transform: translateX(-200%);
+        transform: translateX(-200%);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+        transform: translateX(0%);
+    }
+}
+
+.menu li ul,
+.menu li ul li ul {
+    position: absolute;
+    height: auto;
+    min-width: 250px;
+    padding: 20px;
+    margin: 0;
+    background: #FFF;
+    border-top: 4px solid #e67e22;
+    opacity: 1;
+    visibility: hidden;
+    transition: all 600ms linear;
+    -o-transition: all 300ms linear;
+    -ms-transition: all 300ms linear;
+    -moz-transition: all 300ms linear;
+    -webkit-transition: all 300ms linear;
+    transition-delay: 300ms;
+    -o-transition-delay: 300ms;
+    -ms-transition-delay: 300ms;
+    -moz-transition-delay:   300ms ;
+    -webkit-transition-delay:   300ms ;
+    top: 130px;
+    z-index: 2;
+    left:10px;
+}
+.menu li ul:before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 23%;
+}
+.menu li:hover > ul,
+.menu li ul li:hover > ul {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    top: 50px;
+    left:25px;
+
+}
+.menu li ul li {
+    float: none;
+    margin-bottom: 10px;
+}
+.menu li ul li btn-sinistro {
+    padding: 10px;
+    text-align: left;
+    border: 0;
+    border-bottom: 1px solid #EEE;
+    height: auto;
+
+}
+.menu li ul li .btn-sinistro i {
+    font-size: 16px;
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+.menu li ul li ul {
+    left: 230px;
+    top: 0;
+    border: 0;
+    border-left: 4px solid #e67e22;
+}
+.menu li ul li ul:before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: -9px;
+    border-right: 5px solid #e67e22;
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
+}
+.menu li ul li:hover > ul {
+    top: 0px;
+    left: 200px;
+}
+
+.menu ul{
+    display:inline;
+    border-radius: 10px;
+}
+
+
+.menu .btn-logout{
+   background-color: indigo;
+   color:azure;
+   border-radius:10px;
+   padding: 15px;
+   text-decoration: none;
+}

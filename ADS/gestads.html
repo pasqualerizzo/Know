@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica Account FB</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+<body> 
+    <div class="divForm">
+<form action="verify.php" method="post">
+  <div class="input">
+  <label for="eliminaAccount" class="form-label">Elimina Account Pubblicitario</label><br>
+</div>
+  <div class="input">
+    <label for="eliminaAccount" class="form-label">Nome Account</label><br>
+    <input type="text" class="input-form" name="accountDelete" required>
+  </div>
+  <div class="input">
+    <label for="Password" class="form-label">Password</label><br>
+    <input type="password" class="input-form" name="psw" required>
+  </div class="input">
+  <button type="submit" class="button-form">Elimina</button>
+</form>
+</div>
+<div class="divForm">
+<form action="verify.php" method="post">
+  <div class="input">
+  <label for="addAccount" class="form-label">Aggiungi Account Pubblicitario</label><br>
+</div>
+  <div class="input">
+    <label for="addAccount" class="form-label">Nome Account</label><br>
+    <input type="text" class="input-form" name="addAccountName" required>
+  </div>
+  <div class="input">
+    <label for="addAccount" class="form-label">N. Account</label><br>
+    <input type="text" class="input-form" name="addAccountNu" required>
+  </div>
+  <div class="input">
+    <label for="Password" class="form-label">Password</label><br>
+    <input type="password" class="input-form" name="psw" required>
+  </div >
+  <button type="submit" class="button-form">Aggiungi Password</button>
+</form>
+</div>
+    
+</body>
+
+</html>

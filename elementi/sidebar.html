@@ -1,0 +1,979 @@
+<div class="container" onload="permessi()">
+    <nav>
+        <ul class="menu">
+            <li><a class="btn-sinistro" href="https://ssl.novadirect.it/Know/pannello.php"><strong>Home</strong></a>
+            </li>
+
+            <li id="liHR"><a class="btn-sinistro" href=""><strong>HR</strong></a>
+                <ul>
+                    <li><a class="btn-sinistro" href=""><strong>Operatori</strong></a>
+                        <ul>
+                            <li><a class="btn-sinistro"
+                                   href="https://ssl.novadirect.it/Know/hr/gestioneOperatori/creaTabellaOperatore.php">Gestione
+                                Operatori</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="btn-sinistro" href=""><strong>Commesse</strong></a>
+                        <ul>
+                            <li><a class="btn-sinistro" href=""><strong>Vivigas</strong></a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/vivigas/tabellaVivigas.php">Tabella
+                                        Per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/vivigas/tabellaVivigasGroup.php">Tabella
+                                        Ragruppata per Operatore</a></li>
+                                    <li>
+                                        <a class="btn-sinistro" href="#">Pesi</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vivigas/tabellaPesiComodity.php">Comodity</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vivigas/tabellaPesiInvio.php">Invio </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vivigas/tabellaPesiPagamento.php">Metodo
+                                                Pagamento</a></li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vivigas/tabellaPesiSanata.php">Sanata</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="btn-sinistro" href="#">Stato</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vivigas/tabellaStatoLuce.php">Luce</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vivigas/tabellaStatoGas.php">Gas </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vivigas/tabellaStatoPda.php">PDA</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vivigas/tabellaCampagna.php">Campagna</a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li><a class="btn-sinistro" href=""><strong>GreenNetwork</strong><small>CHIUSA</small></a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/greennetwork/tabellaGreennetwork.php">Tabella
+                                        Per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/greennetwork/tabellaGreennetworkGroup.php">Tabella
+                                        Ragruppata per Operatore</a></li>
+                                    <li><a class="btn-sinistro" href="#">Pesi</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/greennetwork/tabellaPesiComodity.php">Comodity</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/greennetwork/tabellaPesiInvio.php">Invio </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/greennetwork/tabellaPesiPagamento.php">Metodo
+                                                Pagamento</a></li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/greennetwork/tabellaPesiSanata.php">Sanata</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="btn-sinistro" href="#">Stato</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/greennetwork/tabellaStatoLuce.php">Luce</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/greennetwork/tabellaStatoGas.php">Gas </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/greennetwork/tabellaStatoPda.php">PDA</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/greennetwork/tabellaCampagna.php">Campagna</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            <li><a class="btn-sinistro" href=""><strong>Plenitude</strong><small>Dal 01/02/2023</small></a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/plenitude/tabellaPlenitude.php">Tabella
+                                        Per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/plenitude/tabellaPlenitudeGroup.php">Tabella
+                                        Ragruppata per Operatore</a></li>
+                                    <li><a class="btn-sinistro" href="#">Pesi</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/plenitude/tabellaPesiComodity.php">Comodity</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/plenitude/tabellaPesiInvio.php">Invio </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/plenitude/tabellaPesiPagamento.php">Metodo
+                                                Pagamento</a></li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/plenitude/tabellaPesiSanata.php">Sanata</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="btn-sinistro" href="#">Stato</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/plenitude/tabellaStatoLuce.php">Luce</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/plenitude/tabellaStatoGas.php">Gas </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/plenitude/tabellaStatoPda.php">PDA</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/plenitude/tabellaCampagna.php">Campagna</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/plenitude/tabellaMacroStato.php">Macro
+                                                Ko</a></li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/plenitude/tabellaCodiceAgente.php">Codici
+                                                Agenti Sales</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <li><a class="btn-sinistro" href=""><strong>Enel</strong><small>Dal 10/02/2025</small></a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/enel/tabellaEnel.php">Tabella
+                                        Per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/enel/tabellaEnelGroup.php">Tabella
+                                        Ragruppata per Operatore</a></li>
+                                    <li><a class="btn-sinistro" href="#">Pesi</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enel/pesoComodity/tabellaPesiComodity.php">Comodity</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enel/pesoInvio/tabellaPesiInvio.php">Invio </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enel/pesoPagamento/tabellaPesiPagamento.php">Metodo
+                                                Pagamento</a></li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enel/pesoSanata/tabellaPesiSanata.php">Sanata</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="btn-sinistro" href="#">Stato</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enel/statoLuce/tabellaStatoLuce.php">Luce</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enel/statoGas/tabellaStatoGas.php">Gas </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enel/statoPDA/tabellaStatoPda.php">PDA</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enel/statoCampagna/tabellaCampagna.php">Campagna</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <li><a class="btn-sinistro" href=""><strong>Sorgenia</strong><small>Dal
+                                10/05/2025</small></a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/sorgenia/tabellaSorgenia.php">Tabella
+                                        Per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/sorgenia/tabellaSorgeniaGroup.php">Tabella
+                                        Ragruppata per Operatore</a></li>
+                                    <li><a class="btn-sinistro" href="#">Pesi</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/sorgenia/pesoComodity/tabellaPesiComodity.php">Comodity</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/sorgenia/pesoInvio/tabellaPesiInvio.php">Invio </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/sorgenia/pesoPagamento/tabellaPesiPagamento.php">Metodo
+                                                Pagamento</a></li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/sorgenia/pesoSanata/tabellaPesiSanata.php">Sanata</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="btn-sinistro" href="#">Stato</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/sorgenia/statoLuce/tabellaStatoLuce.php">Luce</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/sorgenia/statoGas/tabellaStatoGas.php">Gas </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/sorgenia/statoPDA/tabellaStatoPda.php">PDA</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/sorgenia/statoCampagna/tabellaCampagna.php">Campagna</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li><a class="btn-sinistro" href=""><strong>Iren</strong><small>Dal 01/02/2023</small></a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/iren/tabellaIren.php">Tabella
+                                        Per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/iren/tabellaIrenGroup.php">Tabella
+                                        Ragruppata per Operatore</a></li>
+                                    <li><a class="btn-sinistro" href="#">Pesi</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/iren/tabellaPesiComodity.php">Comodity</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/iren/tabellaPesiInvio.php">Invio </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/iren/tabellaPesiPagamento.php">Metodo
+                                                Pagamento</a></li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/iren/tabellaPesiSanata.php">Sanata</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="btn-sinistro" href="#">Stato</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/iren/tabellaStatoLuce.php">Luce</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/iren/tabellaStatoGas.php">Gas </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/iren/tabellaStatoPda.php">PDA</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/iren/tabellaCampagna.php">Campagna</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li><a class="btn-sinistro" href=""><strong>Union</strong><small>Dal 01/07/2024</small></a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/union/tabellaUnion.php">Tabella
+                                        Per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/union/tabellaUnionGroup.php">Tabella
+                                        Ragruppata per Operatore</a></li>
+                                    <li><a class="btn-sinistro" href="#">Pesi</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/union/pesoComodity/tabellaPesiComodity.php">Comodity</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/union/pesoInvio/tabellaPesiInvio.php">Invio </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/union/pesoMetodoPagamento/tabellaPesiPagamento.php">Metodo
+                                                Pagamento</a></li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/union/pesoSanata/tabellaPesiSanata.php">Sanata</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="btn-sinistro" href="#">Stato</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/union/statoLuce/tabellaStatoLuce.php">Luce</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/union/statoGas/tabellaStatoGas.php">Gas </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/union/statoPDA/tabellaStatoPda.php">PDA</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/union/campagna/tabellaCampagna.php">Campagna</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <li><a class="btn-sinistro" href=""><strong>Enel Out</strong><small>Dal
+                                01/02/2023</small></a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/enelOut/tabellaEnelOut.php">Tabella
+                                        Per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/enelOut/tabellaEnelOutGroup.php">Tabella
+                                        Ragruppata per Operatore</a></li>
+                                    <li><a class="btn-sinistro" href="#">Pesi</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enelOut/tabellaPesiComodity.php">Comodity</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enelOut/tabellaPesiInvio.php">Invio </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enelOut/tabellaPesiPagamento.php">Metodo
+                                                Pagamento</a></li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enelOut/tabellaPesiSanata.php">Sanata</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enelOut/tabellaPesiAssicurazione.php">Assicurazione</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enelOut/tabellaPesiFibra.php">Fibra</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enelOut/tabellaPesiAggiuntivi.php">Aggiuntivi</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="btn-sinistro" href="#">Stato</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enelOut/tabellaStatoLuce.php">Luce</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enelOut/tabellaStatoGas.php">Gas </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enelOut/tabellaStatoPda.php">PDA</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/enelOut/tabellaCampagna.php">Campagna</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="btn-sinistro" href=""><strong>Vodafone</strong><small>Dal 01/02/2023 -
+                                CHIUSA</small></a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/vodafone/tabellaVodafone.php">Tabella
+                                        Per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/vodafone/tabellaVodafoneGroup.php">Tabella
+                                        Ragruppata per Operatore</a></li>
+                                    <li><a class="btn-sinistro" href="#">Pesi</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vodafone/piano/tabellaPesiPiano.php">Piano</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vodafone/opzioni/tabellaPesiOpzioni.php">Opzioni </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vodafone/base/tabellaPesiBase.php">Base</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vodafone/mobile/tabellaPesiMobile.php">Mobile</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vodafone/pagamento/tabellaPesiPagamento.php">Pagato</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="btn-sinistro" href="#">Stato</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vodafone/statoPda/tabellaStatoPda.php">PDA</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vodafone/statoPratica/tabellaStatoPratica.php">Pratica</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/vodafone/campagna/tabellaCampagna.php">Campagna</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li><a class="btn-sinistro" href=""><strong>Heracom</strong><small>Dal
+                                01/02/2025</small></a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/heracom/tabellaHeracom.php">Tabella
+                                        Per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/heracom/tabellaHeracomGroup.php">Tabella
+                                        Ragruppata per Operatore</a></li>
+                                        <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/siscall/heracom/index.php">Import Ore Heracom</a></li>
+                                    <li><a class="btn-sinistro" href="#">Pesi</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/heracom/pesoComodity/tabellaPesiComodity.php">Comodity</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/heracom/pesoInvio/tabellaPesiInvio.php">Invio </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/heracom/pesoMetodoPagamento/tabellaPesiPagamento.php">Metodo
+                                                Pagamento</a></li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/heracom/pesoSanata/tabellaPesiSanata.php">Sanata</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="btn-sinistro" href="#">Stato</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/heracom/statoLuce/tabellaStatoLuce.php">Luce</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/heracom/statoGas/tabellaStatoGas.php">Gas </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/heracom/statoPDA/tabellaStatoPda.php">PDA</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/heracom/campagna/tabellaCampagna.php">Campagna</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <li><a class="btn-sinistro" href=""><strong>Tim</strong><small>Dal 1/06/2025</small></a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/tim/tabellaTim.php">Tabella Per
+                                        Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/tim/tabellaTimGroup.php">Tabella
+                                        Ragruppata per Operatore</a></li>
+                                    <li><a class="btn-sinistro" href="#">Pesi</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/tim/pesoComodity/tabellaPesiComodity.php">Comodity</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/tim/pesoInvio/tabellaPesiInvio.php">Invio </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/tim/pesoPagamento/tabellaPesiPagamento.php">Metodo
+                                                Pagamento</a></li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/tim/pesoSanata/tabellaPesiSanata.php">Sanata</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="btn-sinistro" href="#">Stato</a>
+                                        <ul>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/tim/statoMobile/tabellaStatoMobile.php">Mobile</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/tim/statoFisso/tabellaStatoFisso.php">Fisso </a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/tim/statoPDA/tabellaStatoPda.php">PDA</a>
+                                            </li>
+                                            <li><a class="btn-sinistro"
+                                                   href="https://ssl.novadirect.it/Know/elementi/tim/campagna/tabellaCampagna.php">Campagna</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/cruscotto/CruscottoAssenze/index.php">Cruscotto
+                        Assenze</a></li>
+
+
+                    <li><a class="btn-sinistro" href=""><strong>Stringhe</strong></a>
+                        <ul>
+                            <li><a class="btn-sinistro" href="#">Opzioni</a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/siscall/opzioni/mandato/tabellaMandato.php">Tabella
+                                        Mandato</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="btn-sinistro" href="#">Siscall 1</a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall1/vistaMese.php">Vista
+                                        per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall1/vistaMeseGroup.php">Vista
+                                        per Mese group </a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall1/vistaMeseUserGroup.php">Vista
+                                        per Mese UserGroup</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall1/vistaMeseSede.php">Vista
+                                        per Mese Sede</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="btn-sinistro" href="#">Siscall 2</a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall2/vistaMese.php">Vista
+                                        per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall2/vistaMeseGroup.php">Vista
+                                        per Mese group </a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall2/vistaMeseUserGroup.php">Vista
+                                        per Mese UserGroup</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall2/vistaMeseSede.php">Vista
+                                        per Mese Sede</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="btn-sinistro" href="#">Siscall GT</a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscallGt/vistaMese.php">Vista
+                                        per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscallGt/vistaMeseGroup.php">Vista
+                                        per Mese group </a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscallGt/vistaMeseUserGroup.php">Vista
+                                        per Mese UserGroup</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscallGt/vistaMeseSede.php">Vista
+                                        per Mese Sede</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="btn-sinistro" href="#">Siscall Digital</a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscallDigital/vistaMese.php">Vista
+                                        per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscallDigital/vistaMeseGroup.php">Vista
+                                        per Mese group </a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscallDigital/vistaMeseUserGroup.php">Vista
+                                        per Mese UserGroup</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscallDigital/vistaMeseSede.php">Vista
+                                        per Mese Sede</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="btn-sinistro" href="#">Siscall 4</a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall4/vistaMese.php">Vista
+                                        per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall4/vistaMeseGroup.php">Vista
+                                        per Mese group </a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall4/vistaMeseUserGroup.php">Vista
+                                        per Mese UserGroup</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall4/vistaMeseSede.php">Vista
+                                        per Mese Sede</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="btn-sinistro" href="#">Siscall 4 TimeClock</a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall4TC/vistaMese.php">Vista
+                                        per Mese</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall4TC/vistaMeseGroup.php">Vista
+                                        per Mese group </a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall4TC/vistaMeseUserGroup.php">Vista
+                                        per Mese UserGroup</a></li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/siscall4TC/vistaMeseSede.php">Vista
+                                        per Mese Sede</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="btn-sinistro" href=""><strong>Formazione</strong></a>
+                        <ul>
+                            <li><a class="btn-sinistro" href="#">Formazione</a>
+                                <ul>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/formazione/tabellaformazioneTotale.php">Totale</a>
+                                    </li>
+                                    <li><a class="btn-sinistro"
+                                           href="https://ssl.novadirect.it/Know/elementi/formazione/tabellaformazione.php">Provenienza</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li id="liRecruiting"><a class="btn-sinistro" href=""><strong>Recruiting</strong></a>
+                <ul>
+                    <li><a class="btn-sinistro" href=""><strong>Import INDEED</strong></a>
+                        <ul>
+                            <li><a class="btn-sinistro"
+                                   href="https://ssl.novadirect.it/Know/recruiting/indeed/operatore/index.php">INDEED
+                                Operatori</a></li>
+                            <li><a class="btn-sinistro"
+                                   href="https://ssl.novadirect.it/Know/recruiting/indeed/campagna/index.php">INDEED
+                                Campagna</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li id="liAmministrazione"><a class="btn-sinistro" href=""><strong>Amministrazione</strong></a>
+                <ul>
+                    <li><a class="btn-sinistro" href=""><strong>Pagamento</strong></a>
+                        <ul>
+                            <li><a class="btn-sinistro"
+                                   href="https://ssl.novadirect.it/Know/elementi/pagamenti/garaOre/tabellaGaraOre.php">Gara
+                                Ore</a></li>
+                            <li><a class="btn-sinistro"
+                                   href="https://ssl.novadirect.it/Know/elementi/pagamenti/garaPunti/tabellaGaraPunti.php">Gara
+                                Punti</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="btn-sinistro" href=""><strong>Valore Medio</strong></a>
+                        <ul>
+                            <li><a class="btn-sinistro"
+                                   href="https://ssl.novadirect.it/Know/elementi/valoreMedio/tabellaValoreMedio.php">Valore
+                                Medio</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="btn-sinistro" href=""><strong>Costi / Obj</strong></a>
+                        <ul>
+                            <li><a class="btn-sinistro"
+                                   href="https://ssl.novadirect.it/Know/elementi/pagamenti/PagamentoOperatori/tabellaPagamentoOperatore.php">costo
+                                Stipendi</a></li>
+                            <li><a class="btn-sinistro"
+                                   href="https://ssl.novadirect.it/Know/elementi/tabellaObbiettivoTL/">Tabella
+                                Obbiettivo TL</a></li>
+                            <li><a class="btn-sinistro" href="https://ssl.novadirect.it/Know/elementi/tabellaCosti/">Tabella
+                                Costi</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="btn-sinistro" href=""><strong>Calendario</strong></a>
+                        <ul>
+                            <li><a class="btn-sinistro"
+                                   href="https://ssl.novadirect.it/Know/elementi/pagamenti/calendario/tabellaCalendario.php">Calendario</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li id="liCruscottoProduzione"><a class="btn-sinistro" href=""><strong>Produzione</strong></a>
+                <ul>
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/cruscotto/cruscottoProduzioneInvertito/">Cruscotto
+                        Produzione<br>Invertito</a></li>
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/cruscotto/cruscottoProduzioneTelco/">Cruscotto
+                        Produzione<br>Telco</a></li>
+                    <!--<li><a class="btn-sinistro" href="https://ssl.novadirect.it/Know/cruscotto/cruscottoProduzione/">Cruscotto Produzione</a></li>-->
+                    <li><a class="btn-sinistro" href="https://ssl.novadirect.it/Know/cruscotto/cruscottoOperatore/">Cruscotto
+                        Operatore</a></li>
+                    <li><a class="btn-sinistro" href="https://ssl.novadirect.it/Know/cruscotto/CruscottoMensile/">Cruscotto
+                        Mensile</a></li>
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/cruscotto/ContattiUtili/tabella/creaTabellaContattiUtili.php">Contatti
+                        Utili Heracom</a></li>
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/cruscotto/CruscottoOreDichiarate/index.php">Ore
+                        Dichiarate</a></li>
+                </ul>
+            </li>
+
+            <li id="liCruscottoLead"><a class="btn-sinistro" href=""><strong>Lead</strong></a>
+                <ul>
+
+                    <li><a class="btn-sinistro" id="cruscottoLead"
+                           href="https://ssl.novadirect.it/Know/cruscotto/cruscottoLead/index.php">Cruscotto Lead</a>
+                    </li>
+                    <li><a class="btn-sinistro" id="cruscottoLead"
+                           href="https://ssl.novadirect.it/Know/cruscotto/cruscottoLeadGt/index.php">Cruscotto Lead GtEnergie</a>
+                    </li>
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/cruscotto/CruscottoKpiLeadNuovo/index.php">Nuovo kpi</a>
+                    </li>
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/cruscotto/cruscottoLead/ControlloLead.php">Controllo
+                        Lead</a></li>
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/cruscotto/categoriaUtmC/tabellacategoriaUtmC.php">Categoria
+                        UTM Campagna</a></li>
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/cruscotto/CruscottoKpiLeadPlenitude/index.php">KPI
+                        Quartili</a></li>
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/elementi/tabellaCostiMessaggi/index.php">Costi Invio
+                        messaggi</a></li>
+                    <li><a class="btn-sinistro" id="cruscottoSMS"
+                           href="https://ssl.novadirect.it/Know/cruscotto/cruscottoSMS/index.php">Controllo SMS</a></li>
+                </ul>
+            </li>
+            <li id="liCruscottoStore"><a class="btn-sinistro" href=""><strong>Store</strong></a>
+                <ul>
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/cruscotto/cruscottoStore/index.php">Cruscotto Store</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+            <li id="liAvanzamentoMensile"><a class="btn-sinistro" href=""><strong>Avanzamento Mensile</strong></a>
+                <ul>
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/cruscotto/AvanzamentoMensile/index.php">Avanzamento
+                        Mensile</a></li>
+
+                </ul>
+            </li>
+            <li id="libackoffice"><a class="btn-sinistro" href=""><strong>Backoffice</strong></a>
+                <ul>
+                    <li><a class="btn-sinistro" href="https://ssl.novadirect.it/Know/cruscotto/CruscottoBo/index.php">Cruscotto
+                        Backoffice</a></li>
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/cruscotto/cruscottoChiusuraSerale/">Chiusura Serale</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li id="licruscotto1"><a class="btn-sinistro" href=""><strong>Cruscotti CZ2</strong></a>
+                <ul>
+                    <li><a class="btn-sinistro"
+                           href="https://ssl.novadirect.it/Know/cruscotto/CruscottoProduzioneSubUno/index.php">Cruscotto
+                        Produzione 1</a></li>
+                </ul>
+            </li>
+
+
+            <!-- Temporaneo
+            <li id="temporaneo"><a class="btn-sinistro" href=""><strong>Temporaneo</strong></a>
+                <ul>
+                    <li><a class="btn-sinistro" href="https://ssl.novadirect.it/Know/cruscotto/CruscottoKpiLeadNuovo/index.php">Nuovo kpi</a></li>
+
+                </ul>
+            </li>
+            -->
+        </ul>
+
+
+        <!--
+        spazio per i tasti di log out e impostazione
+        -->
+
+        <ul class="menu">
+            <li>
+                <a class="btn-logout" href="https://ssl.novadirect.it/Know/login/logout.php">
+                    <strong>
+                        Log Out
+                    </strong>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+</div>
+<script>
+    function permessi() {
+        var permesso = document.getElementById("permessi").value;
+        console.log(permesso);
+        var liHr = document.getElementById("liHR");
+        var liCruscottoProduzione = document.getElementById("liCruscottoProduzione");
+        var liCruscottoLead = document.getElementById("liCruscottoLead");
+        var liCruscottoStore = document.getElementById("liCruscottoStore");
+        var liPasquale = document.getElementById("liPasquale");
+        var cruscottoLead = document.getElementById("cruscottoLead");
+        var liAmministratore = document.getElementById("liAmministrazione");
+        var pulsantiera = document.getElementById("pulsantiera");
+        var liRecruiting = document.getElementById("liRecruiting");
+        var libackoffice = document.getElementById("libackoffice");
+        var liAvanzamentoMensile = document.getElementById("liAvanzamentoMensile");
+        var libackoffice = document.getElementById("libackoffice");
+        var liCruscotto1 = document.getElementById("licruscotto1");
+        var liCruscotto2 = document.getElementById("licruscotto2");
+        //var liCruscotto3 = document.getElementById("licruscotto3");
+        //var liTemporaneo = document.getElementById("temporaneo");
+
+
+        switch (permesso) {
+            case "CEO":
+                break;
+            case "HR":
+                liCruscottoProduzione.parentNode.removeChild(liCruscottoProduzione);
+                //liPasquale.parentNode.removeChild(liPasquale);
+                liCruscottoLead.parentNode.removeChild(liCruscottoLead);
+                liCruscottoStore.parentNode.removeChild(liCruscottoStore);
+                //liAmministratore.parentNode.removeChild(liAmministratore);
+                liAvanzamentoMensile.parentNode.removeChild(liAvanzamentoMensile);
+                libackoffice.parentNode.removeChild(libackoffice);
+                liCruscotto2.parentNode.removeChild(liCruscotto2);
+                liCruscotto1.parentNode.removeChild(liCruscotto1);
+                pulsantiera.parentNode.removeChild(pulsantiera);
+                //liTemporaneo.parentNode.removeChild(liTemporaneo);
+
+                break;
+            case "TL":
+                //liPasquale.parentNode.removeChild(liPasquale);
+                liHr.parentNode.removeChild(liHr);
+                liCruscottoStore.parentNode.removeChild(liCruscottoStore);
+                cruscottoLead.parentNode.removeChild(cruscottoLead);
+                liAmministratore.parentNode.removeChild(liAmministratore);
+
+                liRecruiting.parentNode.removeChild(liRecruiting);
+                liAvanzamentoMensile.parentNode.removeChild(liAvanzamentoMensile);
+                libackoffice.parentNode.removeChild(libackoffice);
+                liCruscotto2.parentNode.removeChild(liCruscotto2);
+                liCruscotto1.parentNode.removeChild(liCruscotto1);
+
+
+                pulsantiera.parentNode.removeChild(pulsantiera);
+                //liTemporaneo.parentNode.removeChild(liTemporaneo);
+
+                break;
+            case "Supervisor":
+                liHr.parentNode.removeChild(liHr);
+                //liPasquale.parentNode.removeChild(liPasquale);
+                liAmministratore.parentNode.removeChild(liAmministratore);
+                liRecruiting.parentNode.removeChild(liRecruiting);
+                libackoffice.parentNode.removeChild(libackoffice);
+                pulsantiera.parentNode.removeChild(pulsantiera);
+                // liTemporaneo.parentNode.removeChild(liTemporaneo);
+                break;
+            case "Store" :
+                liHr.parentNode.removeChild(liHr);
+                liCruscottoProduzione.parentNode.removeChild(liCruscottoProduzione);
+                //liPasquale.parentNode.removeChild(liPasquale);
+                liCruscottoLead.parentNode.removeChild(liCruscottoLead);
+                cruscottoLead.parentNode.removeChild(cruscottoLead);
+                liAmministratore.parentNode.removeChild(liAmministratore);
+
+                liRecruiting.parentNode.removeChild(liRecruiting);
+                liAvanzamentoMensile.parentNode.removeChild(liAvanzamentoMensile);
+                libackoffice.parentNode.removeChild(libackoffice);
+                liCruscotto2.parentNode.removeChild(liCruscotto2);
+                liCruscotto1.parentNode.removeChild(liCruscotto1);
+                pulsantiera.parentNode.removeChild(pulsantiera);
+                // liTemporaneo.parentNode.removeChild(liTemporaneo);
+
+                break;
+            case "Marketing" :
+
+                break;
+            case "BO" :
+                liHr.parentNode.removeChild(liHr);
+                cruscottoLead.parentNode.removeChild(cruscottoLead);
+                //liPasquale.parentNode.removeChild(liPasquale);
+                liCruscottoStore.parentNode.removeChild(liCruscottoStore);
+                liAmministratore.parentNode.removeChild(liAmministratore);
+
+                liRecruiting.parentNode.removeChild(liRecruiting);
+                liAvanzamentoMensile.parentNode.removeChild(liAvanzamentoMensile);
+                liCruscotto2.parentNode.removeChild(liCruscotto2);
+                liCruscotto1.parentNode.removeChild(liCruscotto1);
+                pulsantiera.parentNode.removeChild(pulsantiera);
+                // liTemporaneo.parentNode.removeChild(liTemporaneo);
+
+                break;
+
+            case "CZ2":
+                liHr.parentNode.removeChild(liHr);
+                liCruscottoProduzione.parentNode.removeChild(liCruscottoProduzione);
+                //liPasquale.parentNode.removeChild(liPasquale);
+                liCruscottoLead.parentNode.removeChild(liCruscottoLead);
+                liCruscottoStore.parentNode.removeChild(liCruscottoStore);
+                cruscottoLead.parentNode.removeChild(cruscottoLead);
+                liAmministratore.parentNode.removeChild(liAmministratore);
+
+                liRecruiting.parentNode.removeChild(liRecruiting);
+                liAvanzamentoMensile.parentNode.removeChild(liAvanzamentoMensile);
+                liCruscotto2.parentNode.removeChild(liCruscotto2);
+                libackoffice.parentNode.removeChild(libackoffice);
+                pulsantiera.parentNode.removeChild(pulsantiera);
+                //liTemporaneo.parentNode.removeChild(liTemporaneo);
+                break;
+
+            case "BMP":
+                liHr.parentNode.removeChild(liHr);
+                liCruscottoProduzione.parentNode.removeChild(liCruscottoProduzione);
+                //liPasquale.parentNode.removeChild(liPasquale);
+                liCruscottoLead.parentNode.removeChild(liCruscottoLead);
+                liCruscottoStore.parentNode.removeChild(liCruscottoStore);
+                cruscottoLead.parentNode.removeChild(cruscottoLead);
+                liAmministratore.parentNode.removeChild(liAmministratore);
+
+                liRecruiting.parentNode.removeChild(liRecruiting);
+                liAvanzamentoMensile.parentNode.removeChild(liAvanzamentoMensile);
+                liCruscotto1.parentNode.removeChild(liCruscotto1);
+                libackoffice.parentNode.removeChild(libackoffice);
+                pulsantiera.parentNode.removeChild(pulsantiera);
+                // liTemporaneo.parentNode.removeChild(liTemporaneo);
+                break;
+
+
+            default :
+                liHr.parentNode.removeChild(liHr);
+                liCruscottoProduzione.parentNode.removeChild(liCruscottoProduzione);
+
+                liCruscottoLead.parentNode.removeChild(liCruscottoLead);
+                liCruscottoStore.parentNode.removeChild(liCruscottoStore);
+                cruscottoLead.parentNode.removeChild(cruscottoLead);
+                liAmministratore.parentNode.removeChild(liAmministratore);
+
+                liRecruiting.parentNode.removeChild(liRecruiting);
+                liAvanzamentoMensile.parentNode.removeChild(liAvanzamentoMensile);
+                liCruscotto2.parentNode.removeChild(liCruscotto2);
+                liCruscotto1.parentNode.removeChild(liCruscotto1);
+                libackoffice.parentNode.removeChild(libackoffice);
+                pulsantiera.parentNode.removeChild(pulsantiera);
+                //liTemporaneo.parentNode.removeChild(liTemporaneo);
+                break;
+        }
+    }
+</script>
