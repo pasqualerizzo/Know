@@ -222,6 +222,24 @@ foreach ($mandato as $idMandato) {
         case "Vivigas Energia":
         case "Iren":
         case "Enel":
+            // Costruisci filtro sede per stringheTotale
+            $querySedeOre = "";
+            if ($lunghezzaSede == 1) {
+                $querySedeOre .= " AND sede='$sede[0]' ";
+            } elseif ($lunghezzaSede > 1) {
+                for ($l = 0; $l < $lunghezzaSede; $l++) {
+                    if ($l == 0) {
+                        $querySedeOre .= " AND ( ";
+                    }
+                    $querySedeOre .= " sede='$sede[$l]' ";
+                    if ($l == ($lunghezzaSede - 1)) {
+                        $querySedeOre .= " ) ";
+                    } else {
+                        $querySedeOre .= " OR ";
+                    }
+                }
+            }
+            
             $queryOreSettimana = "SELECT
                 SUM(CASE WHEN WEEK(giorno, 1) - WEEK(DATE_SUB(giorno, INTERVAL DAYOFMONTH(giorno) - 1 DAY), 1) + 1 = 1 THEN numero/3600 ELSE 0 END) AS WEEK_1,
                 SUM(CASE WHEN WEEK(giorno, 1) - WEEK(DATE_SUB(giorno, INTERVAL DAYOFMONTH(giorno) - 1 DAY), 1) + 1 = 2 THEN numero/3600 ELSE 0 END) AS WEEK_2,
@@ -231,9 +249,27 @@ foreach ($mandato as $idMandato) {
                 SUM(CASE WHEN WEEK(giorno, 1) - WEEK(DATE_SUB(giorno, INTERVAL DAYOFMONTH(giorno) - 1 DAY), 1) + 1 = 6 THEN numero/3600 ELSE 0 END) AS WEEK_6
             FROM `stringheTotale`
             WHERE giorno >= '$dataMinore' AND giorno <= '$dataMaggiore'
-            AND livello <= 6 AND idMandato = '$idMandato'";
+            AND livello <= 6 AND idMandato = '$idMandato' $querySedeOre";
             break;
         case "EnelIn":
+            // Costruisci filtro sede per oreEnelIn (se la tabella ha il campo sede)
+            $querySedeEnelIn = "";
+            if ($lunghezzaSede == 1) {
+                $querySedeEnelIn .= " AND sede='$sede[0]' ";
+            } elseif ($lunghezzaSede > 1) {
+                for ($l = 0; $l < $lunghezzaSede; $l++) {
+                    if ($l == 0) {
+                        $querySedeEnelIn .= " AND ( ";
+                    }
+                    $querySedeEnelIn .= " sede='$sede[$l]' ";
+                    if ($l == ($lunghezzaSede - 1)) {
+                        $querySedeEnelIn .= " ) ";
+                    } else {
+                        $querySedeEnelIn .= " OR ";
+                    }
+                }
+            }
+            
             $queryOreSettimana = "SELECT
                 SUM(CASE WHEN WEEK(data, 1) - WEEK(DATE_SUB(data, INTERVAL DAYOFMONTH(data) - 1 DAY), 1) + 1 = 1 THEN oreDichiarate ELSE 0 END) AS WEEK_1,
                 SUM(CASE WHEN WEEK(data, 1) - WEEK(DATE_SUB(data, INTERVAL DAYOFMONTH(data) - 1 DAY), 1) + 1 = 2 THEN oreDichiarate ELSE 0 END) AS WEEK_2,
@@ -242,7 +278,7 @@ foreach ($mandato as $idMandato) {
                 SUM(CASE WHEN WEEK(data, 1) - WEEK(DATE_SUB(data, INTERVAL DAYOFMONTH(data) - 1 DAY), 1) + 1 = 5 THEN oreDichiarate ELSE 0 END) AS WEEK_5,
                 SUM(CASE WHEN WEEK(data, 1) - WEEK(DATE_SUB(data, INTERVAL DAYOFMONTH(data) - 1 DAY), 1) + 1 = 6 THEN oreDichiarate ELSE 0 END) AS WEEK_6
             FROM `oreEnelIn`
-            WHERE data >= '$dataMinore' AND data <= '$dataMaggiore'";
+            WHERE data >= '$dataMinore' AND data <= '$dataMaggiore' $querySedeEnelIn";
             break;
         case "Heracom":
             $queryOreSettimana = "SELECT
